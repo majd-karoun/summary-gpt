@@ -13,6 +13,7 @@ app.use(express.json());
 
 app.post("/api/summarize", async (req, res) => {
     const { bookTitle } = req.body;
+    const { language } = req.body;
   
     try {
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -26,7 +27,7 @@ app.post("/api/summarize", async (req, res) => {
           messages: [
             {
               role: "user",
-              content: `summarize the book: ${bookTitle} in details and explain the main ideas behind each `, 
+              content: `summarize the book: ${bookTitle}in details and explain the main ideas behind each and translate it to ${language} if needed.`, 
             },
           ],
         }),
