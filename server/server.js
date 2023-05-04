@@ -32,7 +32,7 @@ app.post("/api/summarize", async (req, res) => {
           messages: [
             {
               role: "user",
-              content: `respond to me in ${language}. summarize the book: ${bookTitle} in details and explain the main ideas behind each section of the book`, 
+              content: `respond in ${language}. summarize the book: ${bookTitle} in details and explain the main ideas behind each section of the book`, 
             },
           ],
         }),
