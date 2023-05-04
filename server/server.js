@@ -27,7 +27,7 @@ app.post("/api/summarize", async (req, res) => {
           messages: [
             {
               role: "user",
-              content: `summarize the book: ${bookTitle}in details and explain the main ideas behind each and translate it to ${language} if needed.`, 
+              content: `summarize the book: ${bookTitle}in details and explain the main ideas behind each and translate it to ${language} if it is in a different language.`, 
             },
           ],
         }),
