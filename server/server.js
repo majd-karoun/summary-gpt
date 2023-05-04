@@ -26,6 +26,9 @@ app.post("/api/summarize", async (req, res) => {
         headers: {
           Authorization: `Bearer ${API_KEY}`,
           "Content-Type": "application/json",
+
+stream: true
+
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
