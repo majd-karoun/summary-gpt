@@ -32,7 +32,8 @@ app.post("/api/summarize", async (req, res) => {
           messages: [
             {
               role: "user",
-              content: `respond in ${language}. summarize the book: ${bookTitle} in details and explain the main ideas behind each section of the book. If the summary was not possible start responding with SummaryError: `, 
+              content: `((respond in ${language}) summarize the book: "${bookTitle}" in ${language} and in details and explain the main ideas behind each section of the book. (only if you faced an error before you finish start your response with "SummaryError:")`
+              , 
             },
           ],
         }),
