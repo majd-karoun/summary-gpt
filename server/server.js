@@ -18,7 +18,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/api/summarize", async (req, res) => {
     const { bookTitle } = req.body;
     const { language } = req.body;
+    
+    let prompt = `((respond in ${language}) summarize the book: "${bookTitle}" in ${language} and in details and explain the main ideas behind each section of the book. (only if you faced an error before you finish start your response with "SummaryError:" and if there was no error then delete "SummaryError:")`
+
+    if(bookTitle.includes(11)){
+      prompt = `respond in ${language}. give another title for the book: ${bookTitle}`
+    }
+
+    if(bookTitle.includes(5946)){
+      prompt = `((respond in ${language}) summarize the book: "${bookTitle}" in ${language} and in details and explain the main ideas behind each section of the book.each section summary should be at least 80 words (only if you faced an error before you finish start your response with "SummaryError:" and if there was no error then delete "SummaryError:")`
+    }
+    
+    
+    
+    
     console.log(req.body)
+    console.log(prompt)
   
     try {
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -35,7 +50,7 @@ stream: true
           messages: [
             {
               role: "user",
-              content: `((respond in ${language}) summarize the book: "${bookTitle}" in ${language} and in details and explain the main ideas behind each section of the book. (only if you faced an error before you finish start your response with "SummaryError:" and if there was no error then delete "SummaryError:")`
+              content: prompt
               , 
             },
           ],
