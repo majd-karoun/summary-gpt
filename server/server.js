@@ -19,7 +19,7 @@ app.post("/api/summarize", async (req, res) => {
     const { bookTitle } = req.body;
     const { language } = req.body;
     
-    let prompt = `((respond in ${language}) summarize the book: "${bookTitle}" in ${language} and in details and explain the main ideas behind each section of the book. (only if you faced an error before you finish start your response with "SummaryError:" and if there was no error then delete "SummaryError:")`
+    let prompt = `(${language}) Summarize the book "${bookTitle}" in ${language}. Provide detailed explanations of the main ideas from each section. If there's an error before completion, start with "SummaryError:", otherwise remove "SummaryError:".`
 
     if(bookTitle.includes(11)){
       prompt = `respond in ${language}. give another title for the book: ${bookTitle}`
@@ -33,7 +33,7 @@ app.post("/api/summarize", async (req, res) => {
     
     
     console.log(req.body)
-    console.log(prompt)
+   
   
     try {
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
