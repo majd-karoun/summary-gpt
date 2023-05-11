@@ -32,7 +32,7 @@ app.post("/api/summarize", async (req, res) => {
     
     
     
-    console.log(req.body)
+    
    
   
     try {
