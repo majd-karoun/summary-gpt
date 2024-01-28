@@ -7,11 +7,13 @@ const bodyParser = require('body-parser');
 
 
 
+
 const PORT = process.env.PORT || 3000; 
 
 const API_KEY = process.env.API_KEY;
 
-app.use(cors());
+app.use(cors({ origin: 'https://summary-gpt.netlify.app' }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
